@@ -3,7 +3,7 @@ package Thread;
 public class Demo18 {
     public static void main(String[] args) throws InterruptedException {
         Thread t=new Thread(()->{
-            for (int i = 0; i < 3; i++) {
+            while (true) {
                 System.out.println("hello thread");
                 try {
                     Thread.sleep(1000);
@@ -11,7 +11,7 @@ public class Demo18 {
                     throw new RuntimeException(e);
                 }
             }
-            System.out.println("thread end");
+           
         });
 
         t.start();
