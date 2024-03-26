@@ -18,6 +18,5 @@ public class Demo18 {
         //线程状态-waiting（死等）
         t.join();
 
-        System.out.println("main end");
     }
 }
