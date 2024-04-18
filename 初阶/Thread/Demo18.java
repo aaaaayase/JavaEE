@@ -15,7 +15,7 @@ public class Demo18 {
         });
 
         t.start();
-        //线程状态-waiting（死等）
+        //线程状态-WAITING（死等）
         t.join();
 
     }
