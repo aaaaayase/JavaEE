@@ -3,6 +3,7 @@ package io;
 import java.io.*;
 import java.util.Scanner;
 
+
 public class Demo12 {
 
     public static void main(String[] args) throws IOException {
