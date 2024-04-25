@@ -31,10 +31,8 @@ public class UdpEchoServer {
             datagramSocket.send(responsePacket);
 
             // 打印日志 ip port 请求以及返回内容
-            System.out.println("request=" + request);
-            System.out.println("response=" + response);
-            System.out.println("ip="+requestPacket.getAddress());
-            System.out.println("port="+requestPacket.getPort());
+            System.out.printf("[%s:%d] req=%s reps=%s", requestPacket.getAddress(), requestPacket.getPort(), request, response);
+            System.out.println();
 
         }
     }
