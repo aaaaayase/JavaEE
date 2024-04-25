@@ -26,7 +26,7 @@ public class UdpEchoServer {
             String response = this.process(request);
 
             // 3.把响应返回客户端 客户端的ip以及端口号可以通过请求的数据包中获取
-            DatagramPacket responsePacket = new DatagramPacket(request.getBytes(), 0, request.getBytes().length,
+            DatagramPacket responsePacket = new DatagramPacket(response.getBytes(), 0, response.getBytes().length,
                     requestPacket.getSocketAddress());
             datagramSocket.send(responsePacket);
 
