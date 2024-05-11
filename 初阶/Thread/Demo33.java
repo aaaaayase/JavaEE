@@ -1,18 +1,20 @@
 package Thread;
 
-import java.util.ArrayDeque;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.LinkedBlockingDeque;
+
+import java.util.concurrent.ArrayBlockingQueue;
+
 
 public class Demo33 {
 
     public static void main(String[] args) throws InterruptedException {
 
-        BlockingDeque<String> blockingDeque = new LinkedBlockingDeque<>();
-        blockingDeque.put("aaaa");
-        System.out.println(blockingDeque.take());
+        ArrayBlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(10);
+        blockingQueue.put("aaaa");
+        System.out.println(blockingQueue.take());
 
-        System.out.println(blockingDeque.take()); //堵塞
+        System.out.println(blockingQueue.take()); //堵塞
+
+        
 
 
     }
