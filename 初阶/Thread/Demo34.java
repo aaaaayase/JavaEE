@@ -1,28 +1,23 @@
 package Thread;
 
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.*;
 
 public class Demo34 {
 
     public static void main(String[] args) throws InterruptedException {
-        BlockingDeque<Integer> blockingDeque = new LinkedBlockingDeque<>(1000);
+        ArrayBlockingQueue<Integer> blockingQueue=new ArrayBlockingQueue<>(10);
 
         Thread t1 = new Thread(() -> {
             int count = 1;
             while (true) {
                 System.out.println("t1生产:" + count);
                 try {
-                    blockingDeque.put(count);
+                    blockingQueue.put(count);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
 
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+
                 count++;
             }
         });
@@ -33,7 +28,7 @@ public class Demo34 {
             while (true) {
                 System.out.println("t2生产:" + count);
                 try {
-                    blockingDeque.put(count);
+                    blockingQueue.put(count);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -51,7 +46,8 @@ public class Demo34 {
 
             try {
                 while (true) {
-                    System.out.println("t3消费:" + blockingDeque.take());
+                    System.out.println("t3消费:" + blockingQueue.take());
+                    Thread.sleep(1000);
                 }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -60,7 +56,7 @@ public class Demo34 {
 
         });
 
-        t1.start();
+
         t2.start();
         Thread.sleep(1000);
         t3.start();
