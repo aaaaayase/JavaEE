@@ -64,6 +64,7 @@ class MyThreadPool {
             });
 
             t.start();
+            list.add(t);
         }
     }
 }
