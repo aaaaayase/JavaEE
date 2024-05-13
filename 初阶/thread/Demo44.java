@@ -1,5 +1,4 @@
 package thread;
-
 import java.util.concurrent.Semaphore;
 
 public class Demo44 {
