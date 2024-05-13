@@ -1,4 +1,4 @@
-package Thread;
+package thread;
 
 //单例模式-懒汉模式
 //在多线程的情况下是不安全的
