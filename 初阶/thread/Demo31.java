@@ -1,4 +1,4 @@
-package Thread;
+package thread;
 
 //单例模式-饿汉模式
 //饿汉模式在多线程的情况下是安全的
