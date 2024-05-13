@@ -1,4 +1,4 @@
-package Thread;
+package thread;
 
 public class Demo20 {
     static int count = 0;
