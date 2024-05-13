@@ -1,4 +1,4 @@
-package Thread;
+package thread;
 
 public class Demo22 {
     //有20个线程，需要同时启动。
