@@ -1,4 +1,4 @@
-package Thread;
+package thread;
 
 public class Demo10 {
     //这里不会出现变量捕获的情况是因为，这里单纯就是内部类使用外部类变量天经地义
