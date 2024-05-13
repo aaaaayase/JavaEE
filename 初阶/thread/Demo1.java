@@ -1,4 +1,4 @@
-package Thread;
+package thread;
 
 class MyThread extends Thread {
     @Override
