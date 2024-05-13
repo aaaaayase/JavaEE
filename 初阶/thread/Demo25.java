@@ -1,4 +1,4 @@
-package Thread;
+package thread;
 
 class Counter1 {
     private int count = 0;
