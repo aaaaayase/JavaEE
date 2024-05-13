@@ -1,4 +1,4 @@
-package Thread;
+package thread;
 
 public class Demo19 {
     public static void main(String[] args) throws InterruptedException {
