@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 引入css分三种方式
+    第一种就是在标签内部设置style属性
+    第二种在head内设置选择器
+    这样做的好处在于程序是按照顺序执行的，当网络很糟糕的时候会先执行css样式，这样不至于出现网页显示出来但是没有样式的情况
+    第三种是在css文件内写好选择器，然后通过link标签来引入css文件中的选择器
+    我们在这里为了便于学习使用第二种方式 -->
+
+
+    <style>
+        /* 标签选择器 */
+        button {
+            color: rgb(255, 122, 231);
+        }
+
+        /* 类选择器 */
+        .font32 {
+            color: pink;
+        }
+
+        /* id选择器 */
+        #test {
+            color: aqua;
+        }
+
+        /* 复合选择器  在复合选择器中也可以使用类选择器以及id选择器*/
+        ul #3 {
+            color: blue;
+        }
+
+        ul li {
+            color: aliceblue;
+        }
+
+
+        div #test2 {
+            color: bisque;
+        }
+
+        /* 可以通过逗号来选择多个标签 */
+        ol #test3,
+        #test4 {
+            color: blueviolet;
+        }
+
+        /* 通配符选择器 */
+        /* * {
+            color: chocolate;
+        } */
+
+        #testdiv1 {
+            color: rgb(255, 0, 0);
+            font-size: 40px;
+            font-weight:700;
+            border: 1px solid pink;
+            width: 400px;
+            height: 400px;
+            margin: 15px;
+            padding: 180px;
+        }
+
+        #testdiv2 {
+            color: #f1ef23;
+            font-size: 40px;
+            font-weight:700 ;
+            border: 1px solid pink;
+            width: 400px;
+            height: 400px;
+            margin: 15px;
+            padding: 180px;
+        }
+
+        #testdiv3 {
+            color: rgb(111,222, 33);
+            font-size: 40px;
+            font-weight:100;
+            border: 1px solid pink;
+            width: 400px;
+            height: 400px;
+            margin: 15px;
+            padding: 180px;
+        }
+
+        /* 注意padding代表内边距 margin代表外边距 但是这里是相对的 */
+        /* 例如这里使用html选择器来修改内边距相当于修改的就是html内容的外边距 */
+        html {
+            padding: 100px;
+        }
+
+        /* 另外还可以修改一个元素为行内元素或块级元素 */
+        span {
+            color: #f1ef23;
+            border: 1px palegreen solid;
+            width: 500px;
+            height: 500px;
+            display: block;
+            /* display: inline;行内 */
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="font32">我是⼀个div, class为font32</div>
+    <div class="font32">我是⼀个div, class为font32</div>
+    <div><a href="#" id="test2">我是⼀个div</a></div>
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li id="3"><a href="#">ccc</a></li>
+    </ul>
+    <ol>
+        <li id="test">1111</li>
+        <li id="test3">2222</li>
+        <li id="test4">3333</li>
+    </ol>
+    <div id="testdiv1">我是一个测试div</div>
+    <div id="testdiv2">我是一个测试div</div>
+    <div id="testdiv3">我是一个测试div</div>
+    <span>我是一个测试span</span>
+    <button id="submit">提交</button>
+</body>
+
+</html>
