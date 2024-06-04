@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- js也是一样有三种引入方式 -->
+    <!-- 第一种就是在行内 -->
+    <input type="button" value="点击" onclick="alert('haha')">
+    <!-- 第二种就是使用script标签 -->
+    <!-- 第三种就是写一个js文件然后通过script标签引入 -->
+</head>
+
+<body>
+    <script>
+        // javascript是动态弱类型的语言 在运行时可以改变变量类型并且可以进行隐式转换
+        var x1 = "num";
+        let x2 = 1;
+        let x3;
+        let x4 = true;
+        console.log(typeof x1);
+        console.log(typeof x2);
+        console.log(typeof x3);
+        console.log(typeof x4);
+        console.log(typeof x5);
+
+        let num1 = "20";
+        let num2 = 20;
+        let num3 = 20;
+        // ==会进行隐式转换 ===不会
+        console.log(num1 == num2);
+        console.log(num1 === num2);
+        console.log(num3 === num2);
+
+        let arr1 = new Array();
+        let arr2 = [1, "sdads", true];
+        console.log(arr2);
+        // 增
+        arr2[5] = 28787;
+        console.log(arr2);
+        // 查
+        console.log(arr2[0]);
+        // 改
+        arr2[1] = 2;
+        console.log(arr2);
+        // 删 从指定的下标开始删除指定个数的数组元素
+        arr2.splice(1, 5);
+        console.log(arr2);
+
+        function sum(x, y) {
+            console.log(x + y);
+        }
+        sum(10, 20);
+        // 多的参数直接舍弃
+        sum(11, 20, 30);
+        // 少的参数被定义为undefined 和数字相加得到NAN
+        sum(10);
+        // 变量也可以接收函数
+        let func = function hello() {
+            console.log("hello");
+        }
+        func();
+        console.log(typeof func);
+
+        // 创建空对象
+        let stu = {};
+        // 创建对象
+        let student = {
+            name: "新垣结衣",
+            age: 22,
+            height: 175,
+            weight: 60,
+            sayHello: function () {
+                console.log("hello");
+            }
+        };
+        // 属性可以使用.或者数组的方式来访问 方法只能使用.的方式来使用
+        console.log(student["age"]);
+        console.log(student.age);
+        student.sayHello();
+        // 还可以通过以下方式建立对象
+        let stu2 = new Object();
+        stu2.age = 12;
+        stu2.name = "蔡徐坤";
+        console.log(stu2);
+        // 通过构造函数的方式来建立对象
+        function stuC(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        let stu3 = new stuC("张三", 23, "男");
+        console.log(stu3);
+
+    </script>
+</body>
+
+</html>
