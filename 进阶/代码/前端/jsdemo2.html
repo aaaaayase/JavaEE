@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <input type="button" value="点我消失">
+</head>
+
+<body>
+    <div id="div1">我是一个div1</div>
+    <div style="font-size:5px;" id="div2">我是一个div2</div>
+    <input type="text" value="我是一个表单字段">
+    <ol>
+        <li>
+            li1
+        </li>
+        <li>
+            li2
+        </li>
+    </ol>
+    
+    <a href="https://www.baidu.com/">百度</a>
+    <!-- 首先引入JQuery 要尽量避免使用url 原因就是不稳定 下载到本地使用src定位 -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        // jquery的操作也是通过选择器对元素执行方法从而进行一系列的交互
+        // 按钮消失的例子 使用jquery的标准语法
+        // $(document).ready(function () {
+        //     $('input').click(function () {
+        //         $(this).hide();
+        //     });
+        // });
+        // 上述代码过于啰嗦 可以简写如下
+        $('input').click(function () {
+            $(this).hide();
+        });
+
+        // 获取/设置元素内容
+        // text() 这个方法只会获得或者文本内容
+        $("#div1").text("update div1");
+        console.log($("#div1").text());
+        // html() 这个方法会连着html标签也会跟着获取以及设置
+        $("#div1").html("<h1>update div1<h1>");
+        console.log($("#div1").html());
+        // val() 方法是用来修改表单字段的值
+        $("input").val("update input");
+        console.log($("input").val());
+
+        // attr()方法用于获取以及修改属性值
+        $("a").attr("href", "https://www.google.com.hk/webhp?hl=zh-CN&sourceid=cnhp");
+
+        // 设置css样式
+        $("#div2").css("font-size", "100px");
+        console.log($("#div2").css("font-size"));
+
+        // 添加html元素
+        // append()在被选的元素结尾插入内容
+        $("ol").append("1111111");
+        $("ol").append("<li>222222</li>");
+        // prepend()在被选元素的开头插⼊内容
+        $("ol").prepend("333333");
+        $("ol").prepend("<li>44444</li>");
+        // after()在被选元素之后插⼊内容
+        $("ol").after("<p>66666</p>");
+        // before()在被选元素之前插⼊内容
+        $("ol").before("<p>88888</p>");
+
+        // remove()删除被选元素（及其⼦元素）
+        // $("ol").remove();
+
+        // empty()删除被选元素的⼦元素。
+        // $("ol").empty();
+
+
+    </script>
+</body>
+
+</html>
