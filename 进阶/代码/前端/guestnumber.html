@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜数字</title>
+</head>
+
+<body>
+    <button id="restart">重新开始一局游戏</button><br />
+    请输入要猜的数字：<input type="text" id="guestnumber"> <button id="guest">猜</button><br />
+    已经猜的次数：<span id="guestcount"></span><br />
+    结果：<span id="result"></span><br />
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        // 生成随机数 1~100 random生成0~1之间的小数乘以100使用floor函数向下取整加一之后就达到1~100范围
+        let num = Math.floor(Math.random() * 100) + 1;
+        // 猜数次数
+        let guestcount = 0;
+        // 没猜数时显示0
+        $("#guestcount").text(guestcount);
+
+        // 重新开一局逻辑
+        $("#restart").click(function () {
+            // 重新生成数字
+            num = Math.floor(Math.random() * 100) + 1;
+            // 将猜数次数清零并且显示
+            guestcount = 0;
+            // 将输入数字的文本框清空
+            $("#guestnumber").val("");
+            $("#guestcount").text(guestcount);
+            // 将猜数结果的文本框清空
+            $("#result").text("");
+        });
+
+        // 猜数逻辑
+        $("#guest").click(function () {
+            // 取到猜数文本框中的数字
+            let guestnumber = $("#guestnumber").val();
+            // 猜数次数加一
+            guestcount++;
+            // 将猜数次数显示出来
+            $("#guestcount").text(guestcount);
+            // 对猜的数大小进行判断 显示对应结果
+            if (guestnumber == num) {
+                $("#result").text("猜对了！！！");
+                $("#result").css("color", "green");
+            } else if (guestnumber > num) {
+                $("#result").text("猜大了！！！");
+                $("#result").css("color", "red");
+            } else {
+                $("#result").text("猜小了！！！");
+                $("#result").css("color", "red");
+            }
+        });
+    </script>
+</body>
+
+</html>
