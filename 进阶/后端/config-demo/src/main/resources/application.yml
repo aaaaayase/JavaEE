@@ -1,0 +1,35 @@
+floor1:
+  floor21: 4
+  floor22: ~ # 表示空串
+  floor23: null # 表示null
+
+string:
+  str1: Hello\nWorld
+  str2: 'Hello\nWorld'
+  str3: "Hello\nWorld" # 只有使用双引号才能输出换行 单引号以及素串直接当成字符串输出
+
+student:
+  id: 12
+  name: yy77
+  list:
+    - 4
+    - 3
+    - 2
+  map:
+    k1: 2
+    k2: 3
+    k3: 4
+
+logging:
+  level:
+    com:
+      yun:
+        config:
+          demo: debug # 在com.yun.config.demo这个目录下去设置日志的默认级别为debug
+  file:
+    path: D:/temp  # 指定日志文件的路径但不能指定名称
+    name: logger/springboot.log # 可以指定日志文件路径以及名称 path和name同时出现会按照name
+  logback:
+    rollingpolicy:
+      file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}.%i
+      max-file-size: 1KB
