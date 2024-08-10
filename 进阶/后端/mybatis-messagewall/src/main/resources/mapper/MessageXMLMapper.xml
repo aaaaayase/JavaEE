@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yun.messagewall.mapper.MessageMapper">
+    <insert id="insert">
+        insert into message_info(`from`, `to`, message)
+        values (#{from}, #{to}, #{message})
+    </insert>
+
+
+    <select id="select" resultType="com.yun.messagewall.model.MessageInfo">
+        select `from`, `to`, message
+        from message_info
+        where delete_flag = 0
+    </select>
+
+
+</mapper>
