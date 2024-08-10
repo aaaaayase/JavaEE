@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class UserController {
+public class  UserController {
     private UserService userService;
 
     // 对于Autowired注解注入的过程
