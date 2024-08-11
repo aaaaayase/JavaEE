@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yun.mybatis.mapper.UserInfoXMLMapper">
+    <resultMap id="baseMap" type="com.yun.mybatis.model.UserInfo">
+        <id column="id" property="id"></id>
+        <!-- 这里建议将其余的属性也都补上-->
+        <!-- 结果映射-->
+        <result column="delete_flag" property="deleteFlag"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="update_time" property="updateTime"></result>
+    </resultMap>
+    <insert id="insertUser">
+        insert into userinfo (username, password, age, gender, phone)
+        values (#{userName}, #{password}, #{age}, #{gender}, #{phone})
+    </insert>
+
+    <insert id="insertUserDynamic">
+        insert into userinfo(<if test="userName!=null">username,</if> password,age,gender,phone) values (<if
+            test="userName!=null">#{userName},
+    </if> #{password},#{age},#{gender},#{phone})
+    </insert>
+    <insert id="insertUserDynamic2">
+        insert into
+        <trim prefix="userinfo(" suffixOverrides="," suffix=")">
+            <if test="userName!=null">
+                username,
+            </if>
+            <if test="password!=null">
+                password,
+            </if>
+            <if test="age!=null">
+                age,
+            </if>
+            <if test="gender!=null">
+                gender,
+            </if>
+            <if test="phone!=null">
+                phone
+            </if>
+        </trim>
+        <trim prefix="values (" suffixOverrides="," suffix=")">
+            <if test="userName!=null">
+                #{userName},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="age!=null">
+                #{age},
+            </if>
+            <if test="gender!=null">
+                #{gender},
+            </if>
+            <if test="phone!=null">
+                #{phone}
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateUser">
+        update userinfo
+        set username= #{userName}
+        where age = #{age}
+    </update>
+    <update id="updateDynamic">
+        update userinfo
+        <set>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="age!=null">
+                age=#{age},
+            </if>
+            <if test="gender!=null">
+                gender=#{gender},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone}
+            </if>
+        </set>
+        <where>
+            <if test="userName!=null">
+                and username=#{userName}
+            </if>
+        </where>
+    </update>
+
+    <delete id="deleteUserById">
+        delete
+        from userinfo
+        where id = #{id}
+    </delete>
+    <delete id="deleteDynamic">
+        delete from userinfo
+        <where>
+            <if test="userName!=null">
+                and username=#{userName}
+            </if>
+            <if test="password!=null">
+                and password=#{password}
+            </if>
+            <if test="age!=null">
+                and age=#{age}
+            </if>
+            <if test="gender!=null">
+                and gender=#{gender}
+            </if>
+            <if test="phone!=null">
+                and phone=#{phone}
+            </if>
+        </where>
+    </delete>
+
+    <select id="queryAllUser" resultType="com.yun.mybatis.model.UserInfo">
+        select *
+        from userinfo
+    </select>
+    <select id="queryAllUser2" resultMap="baseMap">
+        select *
+        from userinfo
+    </select>
+    <select id="queryForTables" resultType="com.yun.mybatis.model.ArticleInfo">
+        select s2.id,
+               s2.title,
+               s2.content,
+               s2.uid,
+               s1.username,
+               s1.age,
+               s1.gender,
+               s1.delete_flag,
+               s1.create_time,
+               s1.update_time
+        from userinfo s1
+                 left join articleinfo s2 on s1.id = s2.uid
+        where s2.id = #{id}
+    </select>
+    <select id="selectUserDynamic" resultType="com.yun.mybatis.model.UserInfo">
+        select *from userinfo
+        <where>
+            <if test="userName!=null">
+                and username=#{userName}
+            </if>
+            <if test="password!=null">
+                and password=#{password}
+            </if>
+            <if test="age!=null">
+                and age=#{age}
+            </if>
+            <if test="gender!=null">
+                and gender=#{gender}
+            </if>
+            <if test="phone!=null">
+                and phone=#{phone}
+            </if>
+        </where>
+    </select>
+
+    <sql id="allColumn">
+        id, username,password, age, gender, phone, delete_flag, create_time, update_time
+    </sql>
+
+    <select id="selectUserDynamic2" resultType="com.yun.mybatis.model.UserInfo">
+        select
+        <include refid="allColumn"></include>
+        from userinfo
+        where id in
+        <foreach collection="ids" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+
+    </select>
+
+
+</mapper>
