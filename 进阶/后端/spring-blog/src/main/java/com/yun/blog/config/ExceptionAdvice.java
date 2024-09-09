@@ -28,13 +28,13 @@ public class ExceptionAdvice {
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     @ExceptionHandler
     public Result handler(NoResourceFoundException e) {
-        log.error("发生异常，e", e.getMessage());
+        log.error("文件不存在，e", e.getMessage());
         return Result.fail(e.getMessage(), ResultCodeEnum.NO_RESOURCES.getCode());
     }
 
     @ExceptionHandler
     public Result handler(MethodArgumentNotValidException e) {
-        log.error("发生异常，e", e.getMessage());
+        log.error("参数校验不通过，e", e.getMessage());
         return Result.fail(e.getMessage(), ResultCodeEnum.PARAM_INVALID.getCode());
     }
 
